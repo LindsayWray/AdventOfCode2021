@@ -14,12 +14,12 @@ int main(){
 
 	input >> drawstring;
 
-    std::stringstream ss(drawstring);
-    for (int num; ss >> num;){
-        draws.push_back(num);
-        if (ss.peek() == ',')
-            ss.ignore();
-    }
+	std::stringstream ss(drawstring);
+	for (int num; ss >> num;){
+		draws.push_back(num);
+		if (ss.peek() == ',')
+			ss.ignore();
+	}
 	
 	do {
 		for(int i = 0; i < 25; i++){
@@ -34,5 +34,5 @@ int main(){
 			bingocards[j].crossNumber(draws[i]);
 		}
 	}
-
+	std::cout << "answer = " << Bingocard::_answer << std::endl;
 }

@@ -1,5 +1,7 @@
 #include "Bingocard.hpp"
 
+long Bingocard::_answer = -1;
+
 Bingocard::Bingocard(int grid[25]) : _done(false) {
 	for(int i = 0; i < 25; i++){
 		_card[i/5][i%5] = grid[i]; 
@@ -53,7 +55,7 @@ void Bingocard::calculateAnswer(int num){
 				answer += _card[i/5][i%5];
 		}
 		answer *= num;
-		std::cout << "answer = " << answer << std::endl;
+		_answer = answer;
 		_done = true;
 	}
 }

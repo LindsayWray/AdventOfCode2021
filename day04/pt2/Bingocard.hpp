@@ -7,16 +7,19 @@
 #include <sstream>
 
 class Bingocard{
-public:
+private:
 	int _card [5][5];
 	bool _done;
 
+public:
 	Bingocard(int grid[25]);
 	~Bingocard(){};
 
 	void crossNumber(int num);
 	bool checkForWin();
 	void calculateAnswer(int num);
+
+	static long _answer;
 };
 
 #endif
