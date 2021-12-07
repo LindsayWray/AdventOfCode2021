@@ -4,7 +4,7 @@
 #include <vector>
 #include <sstream>
 
-void	calculate(std::vector<int> crabPos){
+int	calculate(std::vector<int> crabPos){
 	std::vector<int> counters;
 	int max = *std::max_element(crabPos.begin(), crabPos.end());
 	long long dsitance;
@@ -16,7 +16,7 @@ void	calculate(std::vector<int> crabPos){
 		counters.push_back(count);
 	}
 	int min = *std::min_element(counters.begin(), counters.end());
-	std::cout << min << std::endl;
+	return min;
 }
 
 int main(){
@@ -38,5 +38,6 @@ int main(){
 		if (ss.peek() == ',')
 			ss.ignore();
 	}
-	calculate(crabPos);
+	int answer = calculate(crabPos);
+	std::cout << "answer is: " << answer << std::endl;
 }
