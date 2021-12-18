@@ -19,33 +19,38 @@ Pair*	add(Pair* pair1, Pair* pair2){
 		if (!pair->split())
 			break;
 	}
-	std::cout << "ADDED " << pair->toString() << std::endl;
 
 	return pair;
 }
 
-void	addition(std::vector<Pair*> pairs){
-	int len = pairs.size();
 
-	Pair* total = pairs[0];
+long	find_max(std::vector<Pair*> pairs){
+	long max = 0;
 
-	for (int i = 1; i < len; i++){
-		std::cout << "adding " << total->toString() << std::endl;
-		std::cout << "adding " << pairs[i]->toString() << std::endl;
-
-		total = add(total, pairs[i]);
+	for (int i = 0; i < pairs.size(); i++){
+		for (int j = 0; j < pairs.size(); j++){
+			if (i == j)
+				continue;
+			long ans1 = add(pairs[i], pairs[j])->magitude();
+			if (ans1 > max)
+			{
+				max = ans1;
+				std::cout << i << "," << j << std::endl;
+			}
+			long ans2 = add(pairs[j], pairs[i])->magitude();
+			if (ans2 > max)
+				std::cout << i << "," << j << std::endl;
+				max = ans2;
+		}
 	}
-	std::cout << "FINAL " << total->toString() << std::endl;
-
-	std::cout << "FINAL " << total->magitude() << std::endl;
-
+	return max;
 }
 
 
 int main(){
 	std::vector<Pair*> pairs;
 
-	std::ifstream input("input");
+	std::ifstream input("../input");
 	if (!input.is_open()){
 		std::cerr << "Could not open file\n";
 		exit(EXIT_FAILURE);
@@ -62,7 +67,7 @@ int main(){
 
 	int len = pairs.size();
 
-	addition(pairs);
+	std::cout << find_max(pairs) << std::endl;
 
 	// for (int i = 0; i < len; i++){
 	// 	std::cout << pairs[i].toString() <<std::endl;
