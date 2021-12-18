@@ -4,18 +4,22 @@
 Pair	add(Pair pair1, Pair pair2){
 	Pair pair(&pair1, &pair2);
 
-	std::cout << pair.toString() <<std::endl;
-
-
 	int level = 1;
-	Pair::leftNeighbour = NULL;
-	Pair::rightValueToAdd = -1;
-	bool exploded = pair.explode(level);
-	exploded = pair.explode(level);
+	
+	while(true){
+		std::cout << pair.toString() <<std::endl;
 
-	std::cout << pair.toString() <<std::endl;
+		Pair::leftNeighbour = NULL;
+		Pair::rightValueToAdd = -1;
+		Pair::explosions = false;
+		pair.explode(level);
+		if (Pair::explosions) {
+			continue;
+		}
 
-
+		if (!pair.split())
+			break;
+	}
 	return pair;
 }
 

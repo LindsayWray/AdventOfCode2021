@@ -17,13 +17,16 @@ private:
 public:
 	static int *leftNeighbour;
 	static int rightValueToAdd;
+	static bool explosions;
 
 
 	Pair(std::stringstream &ss);
 	Pair(Pair *pair1, Pair *pair2);
+	Pair(int left, int right);
 	~Pair(){};
 
 	bool	explode(int level);
+	bool	split();
 	std::string toString();
 
 };
