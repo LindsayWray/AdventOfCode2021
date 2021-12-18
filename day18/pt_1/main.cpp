@@ -45,7 +45,7 @@ void	addition(std::vector<Pair*> pairs){
 int main(){
 	std::vector<Pair*> pairs;
 
-	std::ifstream input("input");
+	std::ifstream input("../input");
 	if (!input.is_open()){
 		std::cerr << "Could not open file\n";
 		exit(EXIT_FAILURE);
@@ -63,10 +63,4 @@ int main(){
 	int len = pairs.size();
 
 	addition(pairs);
-
-	// for (int i = 0; i < len; i++){
-	// 	std::cout << pairs[i].toString() <<std::endl;
-	// } 
-
-
 }

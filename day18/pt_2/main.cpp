@@ -1,7 +1,7 @@
 #include "Pair.hpp"
 
 
-Pair*	add(Pair* pair1, Pair* pair2){
+Pair*	add(Pair *pair1, Pair *pair2){
 	Pair* pair = new Pair(pair1, pair2);
 
 	int level = 1;
@@ -24,22 +24,21 @@ Pair*	add(Pair* pair1, Pair* pair2){
 }
 
 
-long	find_max(std::vector<Pair*> pairs){
+long	find_max(std::vector<Pair> pairs){
 	long max = 0;
+	std::vector<Pair> cpy = pairs;
 
 	for (int i = 0; i < pairs.size(); i++){
 		for (int j = 0; j < pairs.size(); j++){
+
+
 			if (i == j)
 				continue;
-			long ans1 = add(pairs[i], pairs[j])->magitude();
+			long ans1 = add(&pairs[i], &pairs[j])->magitude();
 			if (ans1 > max)
-			{
 				max = ans1;
-				std::cout << i << "," << j << std::endl;
-			}
-			long ans2 = add(pairs[j], pairs[i])->magitude();
+			long ans2 = add(&pairs[j], &pairs[i])->magitude();
 			if (ans2 > max)
-				std::cout << i << "," << j << std::endl;
 				max = ans2;
 		}
 	}
@@ -48,7 +47,7 @@ long	find_max(std::vector<Pair*> pairs){
 
 
 int main(){
-	std::vector<Pair*> pairs;
+	std::vector<Pair> pairs;
 
 	std::ifstream input("../input");
 	if (!input.is_open()){
@@ -60,7 +59,7 @@ int main(){
 		std::string line;
 		input >> line;
 		std::stringstream ss(line);
-		Pair* pair = new Pair(ss);
+		Pair pair = Pair(ss);
 		pairs.push_back(pair);
 	}while(!input.eof());
 	input.close();
@@ -68,10 +67,4 @@ int main(){
 	int len = pairs.size();
 
 	std::cout << find_max(pairs) << std::endl;
-
-	// for (int i = 0; i < len; i++){
-	// 	std::cout << pairs[i].toString() <<std::endl;
-	// } 
-
-
 }

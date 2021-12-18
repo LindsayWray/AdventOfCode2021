@@ -14,7 +14,6 @@ Pair::Pair(std::stringstream &ss){
 		_left = NULL;
 	}
 
-
 	ss.ignore(); //ignores comma
 
 	if (ss.peek() == '[')
@@ -27,7 +26,10 @@ Pair::Pair(std::stringstream &ss){
 	ss.ignore(); //ignores closing bracket
 }
 
-Pair::Pair(Pair *pair1, Pair *pair2) : _left(pair1), _right(pair2){}
+Pair::Pair(Pair *pair1, Pair *pair2) {
+	 _left = new Pair(*pair1);
+	 _right= new Pair(*pair2);
+}
 
 Pair::Pair(int left, int right) : _leftNum(left), _rightNum(right), _left(NULL), _right(NULL) {}
 
@@ -129,9 +131,6 @@ long Pair::magitude() {
 		mag += 2 *_rightNum;
 	return mag;
 }
-
-
-
 
 	// if(level < 4){		
 	// 	if(_left) {
